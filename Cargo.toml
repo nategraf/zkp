@@ -1,11 +1,15 @@
 [package]
 name = "zkp"
-version = "0.7.0"
+# Before incrementing:
+# - update CHANGELOG
+# - update html_root_url
+# - update README if required by semver
+version = "0.8.0"
 authors = ["Henry de Valence <hdevalence@hdevalence.ca>"]
 edition = "2018"
 license = "CC0-1.0"
 readme = "README.md"
-repository = "https://github.com/hdevalence/zkp"
+repository = "https://github.com/zkcrypto/zkp"
 documentation = "https://docs.rs/zkp"
 categories = ["cryptography"]
 keywords = ["cryptography", "ristretto", "zero-knowledge", "NIZK", "compiler"]
@@ -24,11 +28,11 @@ serde = "1"
 serde_derive = "1"
 thiserror = "1"
 # Disable default features to deselect a backend, then select one below
-curve25519-dalek = { version = "2", default-features = false, features = ["serde", "std"] }
+curve25519-dalek = { package = "curve25519-dalek-ng", version = "3", default-features = false, features = ["serde", "std"] }
 
 [dev-dependencies]
 bincode = "1"
-sha2 = "0.8"
+sha2 = "0.9"
 
 [features]
 nightly = ["curve25519-dalek/nightly"]
