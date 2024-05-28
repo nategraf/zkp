@@ -15,7 +15,7 @@ macro_rules! __compute_formula_constraint {
     // Unbracket a statement
     (($public_vars:ident, $secret_vars:ident) ($($x:tt)*)) => {
         // Add a trailing +
-        __compute_formula_constraint!(($public_vars,$secret_vars) $($x)* +)
+        $crate::__compute_formula_constraint!(($public_vars,$secret_vars) $($x)* +)
     };
     // Inner part of the formula: give a list of &Scalars
     // Since there's a trailing +, we can just generate the list as normal...
@@ -164,7 +164,7 @@ macro_rules! define_proof {
                     $(
                         cs.constrain(
                             publics.$lhs,
-                            __compute_formula_constraint!( (publics, secrets) $statement ),
+                            $crate::__compute_formula_constraint!( (publics, secrets) $statement ),
                         );
                     )+
                 }
